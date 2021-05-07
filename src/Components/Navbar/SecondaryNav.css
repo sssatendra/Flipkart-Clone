@@ -1,0 +1,46 @@
+.Snavbar__out {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  background-color: white;
+  transition-timing-function: ease-in;
+  transition: all 0.5s;
+  height: 10vh;
+  align-items: center;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  padding: 20px;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  transition: transform 450ms;
+}
+
+.Snavbar__out::-webkit-scrollbar {
+  display: none;
+}
+
+.nav > img {
+  width: 50px;
+  height: auto;
+  cursor: pointer;
+  transition: transform 450ms;
+  object-fit: contain;
+}
+
+.nav:hover {
+  transform: scale(1.2);
+  opacity: 1;
+  color: #0875c9;
+}
+
+h4 {
+  font-size: small;
+  margin-left: 20px;
+  font-weight: 450;
+}

@@ -1,0 +1,16 @@
+.products__dod {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+  overflow-y: hidden;
+  overflow-x: scroll;
+}
+
+.products__dod::-webkit-scrollbar {
+  display: none;
+}
+
+.products > h2 {
+  margin: 10px;
+}

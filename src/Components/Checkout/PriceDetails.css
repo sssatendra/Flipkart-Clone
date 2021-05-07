@@ -1,0 +1,67 @@
+.priceDetails {
+  width: 33vw;
+  height: 50vh;
+  margin: 0 40px;
+  background-color: white;
+  box-shadow: 2px 4px 30px 0px rgba(0, 0, 0, 0.46);
+  -webkit-box-shadow: 2px 4px 30px 0px rgba(0, 0, 0, 0.46);
+  -moz-box-shadow: 2px 4px 30px 0px rgba(0, 0, 0, 0.46);
+}
+
+.billinfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+
+.header__container > h3 {
+  padding: 10px;
+  color: gray;
+  font-weight: 500;
+}
+
+.billinfo__left > h4 {
+  padding: 10px;
+  font-size: 14px;
+  font-weight: 400;
+  text-align: left;
+  margin-left: 20px;
+}
+
+.billinfo__right > h4 {
+  padding: 10px;
+  font-size: 14px;
+  font-weight: 400;
+  text-align: right;
+  margin-right: 20px;
+}
+
+.billinfo__left > h3 {
+  padding: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: left;
+  margin-left: 20px;
+}
+
+.billinfo__right > h3 {
+  padding: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: right;
+  margin-right: 20px;
+}
+
+.priceDetails > h4 {
+  font-size: smaller;
+  font-weight: 600;
+  justify-content: center;
+  text-align: center;
+  padding: 15px;
+  color: #388e3c;
+}
+
+.nodisplay {
+  display: none;
+}

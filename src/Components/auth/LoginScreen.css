@@ -1,0 +1,133 @@
+.loginScreen {
+  position: relative;
+  height: 100%;
+  background: url("https://storiesflistgv2.azureedge.net/stories/2017/09/bbdschedule_mainbanner2-59bfb1e3e37b8.jpg");
+  background-size: cover;
+}
+.loginScreen__body {
+  position: absolute;
+  top: 15%;
+  /* width: 100vw; */
+  margin-left: auto;
+  margin-right: auto;
+  z-index: 1;
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+  left: 0;
+  right: 0;
+}
+.loginScreen__gradient {
+  width: 100%;
+  z-index: 1;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  background-image: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.8) 0,
+    rgba(0, 0, 0, 0) 60%,
+    rgba(0, 0, 0, 0.8) 100%
+  );
+  background-image: linear-gradient(
+    180deg,
+    transparent,
+    rgba(14, 215, 255, 0.35),
+    rgb(52, 225, 231)
+  );
+}
+
+.loginScreen__button {
+  position: fixed;
+  right: 20px;
+  top: 15px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #e50914;
+  border: none;
+  border-radius: 5px;
+}
+
+.loginScreen__body > h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.loginScreen__body > h2 {
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin-bottom: 30px;
+}
+
+.loginScreen__body > h3 {
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.loginScreen__input > form > input {
+  padding: 10px;
+  outline-width: 0;
+  height: 30px;
+  width: 75%;
+  border: none;
+  max-width: 600px;
+  /* border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;xz */
+  border-radius: 5px;
+}
+
+.loginScreen__input > form > button {
+  margin-top: 20px;
+  padding: 10px;
+  outline-width: 0;
+  height: 30px;
+  width: 120px;
+  border: none;
+  max-width: 600px;
+  border-radius: 5px;
+  text-align: center;
+  vertical-align: center;
+  font-family: "Montserrat";
+  font-weight: 800;
+  box-shadow: 0 1px 2px #5e5d5b;
+  line-height: 10px;
+}
+.loginScreen__input > form > button:hover {
+  background-color: transparent;
+  border: 1px solid white;
+}
+
+.loginScreen__input > .login__form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  height: 55vh;
+  width: 40vw;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.login__form > input {
+  padding: 20px;
+  margin: 20px;
+}
+
+.loginScreen__getStarted {
+  padding: 16px 20px;
+  font-size: 1rem;
+  background-color: #e50914;
+  border: none;
+  color: #fff;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  cursor: pointer;
+}

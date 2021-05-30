@@ -14,3 +14,29 @@
 .products > h2 {
   margin: 10px;
 }
+
+.products__suggested {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row !important;
+  align-items: center;
+  overflow-y: hidden;
+  overflow-x: scroll;
+}
+
+.products__suggested::-webkit-scrollbar {
+  display: none;
+}
+
+.products__electronics {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row !important;
+  align-items: center;
+  overflow-y: hidden;
+  overflow-x: scroll;
+}
+
+.products__electronics::-webkit-scrollbar {
+  display: none;
+}

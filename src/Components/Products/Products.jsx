@@ -1,11 +1,42 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Product from "./Product";
 import "./Products.css";
 
 function Products() {
+  const [items, setItems] = useState();
+  const [electronics, setElectronics] = useState();
+
+  const fetchProducts = async () => {
+    console.log("Inside Async Function");
+    const URL = "https://fakestoreapi.com/products?limit=50";
+    const data = await fetch(URL);
+    const jsonData = await data.json();
+    setItems(jsonData);
+  };
+
+  const fetchElectronics = async () => {
+    const URL = "https://fakestoreapi.com/products/category/electronics";
+    const data = await fetch(URL);
+    const jsonData = await data.json();
+    setElectronics(jsonData);
+  };
+
+  function myFunction() {
+    var x = Math.floor(Math.random() * 5 + 1);
+    return x;
+  }
+
+  useEffect(() => {
+    fetchProducts();
+    fetchElectronics();
+  }, []);
+
+  // console.log("Idhar dekh le ");
+  // console.log(items);
+
   return (
     <div className="products">
-      <h2>Deals of the Day</h2>
+      <h2>Laptops</h2>
       <div className="products__dod">
         <Product
           id="1651981"
@@ -101,9 +132,34 @@ function Products() {
         />
       </div>
 
-      <div className="products__suggested"></div>
-
-      <div className="products__discounts"></div>
+      <h2>New in Store</h2>
+      <div className="products__suggested">
+        {items?.map((item) => {
+          return (
+            <Product
+              id={item.id}
+              image={item.image}
+              title={item.title}
+              rating={Math.floor(Math.random() * 5 + 1)}
+              price={Math.floor(item.price * 72.39)}
+            />
+          );
+        })}
+      </div>
+      <h2>Electronics</h2>
+      <div className="products__electronics">
+        {electronics?.map((item) => {
+          return (
+            <Product
+              id={item.id}
+              image={item.image}
+              title={item.title}
+              rating={Math.floor(Math.random() * 5 + 1)}
+              price={Math.floor(item.price * 72.39)}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 }

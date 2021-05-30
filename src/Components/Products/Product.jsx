@@ -1,12 +1,16 @@
 import React from "react";
 import "./Product.css";
 import { useStateValue } from "../../StateProvider";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { Zoom } from "react-toastify";
+import Button from "@material-ui/core/Button";
 
 function Product(props) {
   const [{ basket }, dispatch] = useStateValue();
 
   const truncate = (str) => {
-    return str.length > 30 ? str.substring(0, 48) + "..." : str;
+    return str.length > 30 ? str.substring(0, 36) + "..." : str;
   };
 
   console.log("This is the basket ", basket);
@@ -22,20 +26,42 @@ function Product(props) {
         rating: props.rating,
       },
     });
+    toast.dark(`${truncate(props.title)} added to Cart`);
   };
 
   return (
-    <div className="product">
-      <div className="product__info">
-        <img className="product__image" src={props.image} alt="" />
-        <p className="product__name">{truncate(props.title)}</p>
-        <div className="product__rating">
-          <p>{props.rating}🌟</p>
+    <>
+      <div className="product">
+        <div className="product__info">
+          <img
+            className="product__image"
+            src={props.image}
+            alt={truncate(props.title)}
+          />
+          <p className="product__name">{truncate(props.title)}</p>
+          <div className="product__rating">
+            <p>{props.rating}🌟</p>
+          </div>
+          <p className="product__price">₹{props.price}</p>
+          <Button variant="outlined" color="primary" onClick={addToBasket}>
+            Add to cart
+          </Button>
+          {/* <button onClick={addToBasket}>ADD TO CART</button> */}
         </div>
-        <p className="product__price">₹{props.price}</p>
-        <button onClick={addToBasket}>ADD TO CART</button>
       </div>
-    </div>
+      <ToastContainer
+        position="bottom-left"
+        transition={Zoom}
+        autoClose={4000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
+    </>
   );
 }
 

@@ -2,6 +2,9 @@ import React from "react";
 import Counter from "./Counter";
 import "./CartItems.css";
 import { useStateValue } from "../../StateProvider";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { Zoom } from "react-toastify";
 
 function CartItems({ id, image, title, price }) {
   const [{ basket }, dispatch] = useStateValue();
@@ -12,6 +15,7 @@ function CartItems({ id, image, title, price }) {
 
   const removeFromBasket = () => {
     // remove thr item from basket
+    toast.success(`${truncate(title)} removed from Cart`);
     dispatch({
       type: "REMOVE_FROM_BASKET",
       id: id,
@@ -19,6 +23,17 @@ function CartItems({ id, image, title, price }) {
   };
   return (
     <div className="cartItems">
+      <ToastContainer
+        position="bottom-left"
+        transition={Zoom}
+        autoClose={4000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick={true}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+      />
       <div className="midcart">
         <div className="product__in">
           <img className="product__img" src={image} alt="" />
@@ -35,7 +50,7 @@ function CartItems({ id, image, title, price }) {
           </div>
         </div>
         <div className="product__info2">
-          <h4>Delivery by Sat Mat 1 | ₹40</h4>
+          <h4>Delivery by Sat Mar 1 | ₹40</h4>
           <p className="deliver"> 7 days Replacement Policy</p>
         </div>
       </div>

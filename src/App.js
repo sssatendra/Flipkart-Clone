@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Cart from "./Components/Checkout/Cart";
 import LoginScreen from "./Components/auth/LoginScreen"
 import RegisterScreen from "./Components/auth/RegisterScreen"
+import ProductScreen from "./Components/ProductScreen/ProductScreen";
 
 
 function App() {
@@ -30,6 +31,10 @@ function App() {
           <Route path="/login">
             <Navbar />
             <LoginScreen />
+          </Route>
+          <Route path="/product/:id">
+            <Navbar />
+            <ProductScreen />
           </Route>
           <Route path="/register">
             <Navbar />

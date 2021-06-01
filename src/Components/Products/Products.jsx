@@ -137,6 +137,7 @@ function Products() {
         {items?.map((item) => {
           return (
             <Product
+              key={item.id}
               id={item.id}
               image={item.image}
               title={item.title}
@@ -151,6 +152,7 @@ function Products() {
         {electronics?.map((item) => {
           return (
             <Product
+              key={item.id}
               id={item.id}
               image={item.image}
               title={item.title}

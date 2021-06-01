@@ -4,7 +4,7 @@ import { useStateValue } from "../../StateProvider";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Zoom } from "react-toastify";
-import Button from "@material-ui/core/Button";
+// import Button from "@material-ui/core/Button";
 
 function Product(props) {
   const [{ basket }, dispatch] = useStateValue();
@@ -13,20 +13,28 @@ function Product(props) {
     return str.length > 30 ? str.substring(0, 36) + "..." : str;
   };
 
-  console.log("This is the basket ", basket);
-
   const addToBasket = () => {
     // dispatch the item in data layer
     dispatch({
       type: "ADD_TO_BASKET",
       item: {
+        id: props.id,
         title: props.title,
         image: props.image,
         price: props.price,
         rating: props.rating,
       },
     });
-    toast.dark(`${truncate(props.title)} added to Cart`);
+  };
+
+  const toastNotify = () => {
+    console.log("Humko Bulaya ??");
+    toast.success(`${truncate(props.title)} added to Cart`);
+  };
+
+  const callTwoFunction = () => {
+    addToBasket();
+    toastNotify();
   };
 
   return (
@@ -43,10 +51,10 @@ function Product(props) {
             <p>{props.rating}🌟</p>
           </div>
           <p className="product__price">₹{props.price}</p>
-          <Button variant="outlined" color="primary" onClick={addToBasket}>
+          {/* <Button variant="outlined" color="primary" onClick={addToBasket}>
             Add to cart
-          </Button>
-          {/* <button onClick={addToBasket}>ADD TO CART</button> */}
+          </Button> */}
+          <button onClick={callTwoFunction}>ADD TO CART</button>
         </div>
       </div>
       <ToastContainer

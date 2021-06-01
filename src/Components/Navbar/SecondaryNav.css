@@ -10,6 +10,7 @@
   overflow-y: hidden;
   overflow-x: scroll;
   padding: 20px;
+  /* font-weight:1200; */
 }
 
 .nav {

@@ -37,7 +37,7 @@ function Products() {
   return (
     <div className="products">
       <h2>Laptops</h2>
-      <div className="products__dod">
+      <div data-aos="fade-up" className="products__dod">
         <Product
           id="1651981"
           image="https://rukminim1.flixcart.com/image/416/416/k9loccw0/computer/4/f/w/acer-na-gaming-laptop-original-imafrcpya8phvptc.jpeg?q=70"
@@ -133,7 +133,7 @@ function Products() {
       </div>
 
       <h2>New in Store</h2>
-      <div className="products__suggested">
+      <div data-aos="fade-up" className="products__suggested">
         {items?.map((item) => {
           return (
             <Product

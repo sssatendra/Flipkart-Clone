@@ -15,3 +15,7 @@ https://affiliate-api.flipkart.net/affiliate/topFeeds/<your affiliate_tracking_i
 Delta Fetch API
 
 https://affiliate-api.flipkart.net/affiliate/api/deltaFeeds/sssatendr/category/mobile/fromVersion/1.json
+
+
+
+India's biggest online store for Mobiles, Fashion (Clothes/Shoes), Electronics, Home Appliances, Books, Jewelry, Home, Furniture, Sporting goods, Beauty ...

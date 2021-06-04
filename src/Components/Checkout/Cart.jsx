@@ -39,12 +39,6 @@ function Cart() {
               ))}
             </div>
 
-            {/* <div className="bottom__cart">
-          <Counter />
-          <button className="btn__primary">SAVE FOR LATER</button>
-          <button className="btn__primary">REMOVE</button>
-        </div> */}
-
             <div className="place__order">
               <button
                 disabled={!basket}

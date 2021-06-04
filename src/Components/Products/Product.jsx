@@ -1,13 +1,40 @@
 import React from "react";
 import "./Product.css";
 import { useStateValue } from "../../StateProvider";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { Zoom } from "react-toastify";
-// import Button from "@material-ui/core/Button";
+import Snackbar from "@material-ui/core/Snackbar";
+import MuiAlert from "@material-ui/lab/Alert";
+import { makeStyles } from "@material-ui/core/styles";
+
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    width: "100%",
+    "& > * + *": {
+      marginTop: theme.spacing(2),
+    },
+  },
+}));
 
 function Product(props) {
   const [{ basket }, dispatch] = useStateValue();
+
+  const classes = useStyles();
+  const [open, setOpen] = React.useState(false);
+
+  const handleClick = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
+  };
 
   const truncate = (str) => {
     return str.length > 30 ? str.substring(0, 36) + "..." : str;
@@ -27,14 +54,9 @@ function Product(props) {
     });
   };
 
-  const toastNotify = () => {
-    console.log("Humko Bulaya ??");
-    toast.success(`${truncate(props.title)} added to Cart`);
-  };
-
   const callTwoFunction = () => {
     addToBasket();
-    toastNotify();
+    handleClick();
   };
 
   return (
@@ -57,18 +79,13 @@ function Product(props) {
           <button onClick={callTwoFunction}>ADD TO CART</button>
         </div>
       </div>
-      <ToastContainer
-        position="bottom-left"
-        transition={Zoom}
-        autoClose={4000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
+      <div className={classes.root}>
+        <Snackbar open={open} autoHideDuration={1000} onClose={handleClose}>
+          <Alert onClose={handleClose} severity="success">
+            {`${truncate(props.title)} added to cart`}
+          </Alert>
+        </Snackbar>
+      </div>
     </>
   );
 }

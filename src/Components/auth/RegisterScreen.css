@@ -6,10 +6,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  /* background: rgba(0, 0, 0, 0.6); */
 }
 
 .SignupScreen {
   max-width: 600px;
+  width: 400px;
   padding: 50px;
   margin-left: auto;
   margin-right: auto;
@@ -20,6 +22,7 @@
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.18);
   /* margin-top: 6rem; */
+  background: rgba(0, 0, 0, 0.6);
 }
 
 .SignupScreen > form {
@@ -51,16 +54,23 @@
 .SignupScreen > form h1 {
   text-align: left;
   margin-bottom: 25px;
+  color: white;
+}
+
+form h4 {
+  text-align: center;
 }
 
 .signupScreen__gray {
-  color: gray;
-  text-align: left;
+  color: white;
+  text-align: center;
+  /* margin-top: 10px; */
 }
 
 .signupScreen__link:hover {
   cursor: pointer;
   text-decoration: underline;
+  color: blue;
 }
 
 .loginScreen__gradient {

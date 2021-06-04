@@ -5,11 +5,20 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import reducer, { initialState } from './reducer';
 import { StateProvider } from './StateProvider';
+import { createStore } from 'redux';
+import { Provider } from "react-redux";
+import { composeWithDevTools } from "redux-devtools-extension";
+import { rootReducer } from './reducers/index'
+
+const store = createStore(rootReducer, composeWithDevTools());
 
 ReactDOM.render(
-  <StateProvider initialState={initialState} reducer={reducer} >
-    <App />
-  </StateProvider>
+  <Provider store={store}>
+    <StateProvider initialState={initialState} reducer={reducer} >
+      <App />
+    </StateProvider>
+  </Provider>
+
   ,
   document.getElementById('root')
 );

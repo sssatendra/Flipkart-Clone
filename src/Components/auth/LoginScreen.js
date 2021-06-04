@@ -1,25 +1,46 @@
 import React, { useState } from 'react';
-import { useRef } from 'react';
 import "./LoginScreen.css"
-import RegisterScreen from './RegisterScreen'
 import { auth } from '../../Firebase';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router';
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+import CircularIndeterminate from "./Circular";
+import { Link } from 'react-router-dom';
+
 
 function LoginScreen() {
 
-    const [signIn, setSignIn] = useState(false);
-    const emailRef = useRef(null);
-    const passwordRef = useRef(null);
-    const signInUser = (e) => {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState('');
+    const [loading, setLoading] = useState(false)
+
+    let dispatch = useDispatch();
+    const history = useHistory();
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        auth.signInWithEmailAndPassword(
-            emailRef.current.value,
-            passwordRef.current.value
-        ).then((authUser) => {
-            console.log(authUser);
-        }).catch((error) => {
-            alert("Invalid Credentials");
-        })
-    };
+        setLoading(true);
+        try {
+            const result = await auth.signInWithEmailAndPassword(email, password);
+            console.log(result);
+            const { user } = result;
+            const idTokenResult = await user.getIdTokenResult()
+            dispatch({
+                type: "LOGGED_IN_USER",
+                payload: {
+                    email: user.email,
+                    token: idTokenResult.token,
+                }
+            });
+            history.push('/');
+        } catch (error) {
+            console.log(error);
+            setLoading(false);
+            toast.error(error.message);
+        }
+    }
+
 
     return (
         <div className="loginScreen">
@@ -27,21 +48,18 @@ function LoginScreen() {
                 <div className="loginScreen__gradient" />
             </div>
             <div className="loginScreen__body">
-
-                {signIn ? (
-                    <RegisterScreen />
-                ) : (
-                    <>
-                        <div className="loginScreen__input" >
-                            <form className="login__form">
-                                <h1>Login to Shop</h1>
-                                <input ref={emailRef} placeholder="Email" type="email" />
-                                <input ref={passwordRef} placeholder="Password" type="password" />
-                                <button type="submit" onClick={signInUser} >Login</button>
-                            </form>
-                        </div>
-                    </>
-                )}
+                <>
+                    <div className="loginScreen__input" >
+                        <form className="login__form">
+                            <h1>Login to Shop</h1>
+                            <input placeholder="Email" value={email} onChange={e => setEmail(e.target.value)} type="email" autoFocus />
+                            <input placeholder="Password" value={password} onChange={e => setPassword(e.target.value)} type="password" />
+                            {loading ? (<CircularIndeterminate />) : <button disabled={!email || password.length < 6} type="submit" onClick={handleSubmit} >Login</button>}
+                            <Link to="/forgotPassword"> <p>Forgot Password?</p> </Link>
+                            <ToastContainer />
+                        </form>
+                    </div>
+                </>
             </div>
         </div>
     )

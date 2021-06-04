@@ -9,9 +9,37 @@ import Cart from "./Components/Checkout/Cart";
 import LoginScreen from "./Components/auth/LoginScreen"
 import RegisterScreen from "./Components/auth/RegisterScreen"
 import ProductScreen from "./Components/ProductScreen/ProductScreen";
+import RegisterComplete from "./Components/auth/RegisterComplete";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { auth } from "./Firebase";
+import ForgotPassword from "./Components/auth/ForgotPassword";
+
+
 
 
 function App() {
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged(async (user) => {
+      if (user) {
+        const idTokenResult = await user.getIdTokenResult()
+
+        dispatch({
+          type: "LOGGED_IN_USER",
+          payload: {
+            email: user.email,
+            token: idTokenResult.token,
+          }
+        })
+      }
+
+    })
+    return () => unsubscribe();
+  })
+
   return (
     <Router>
       <div className="app">
@@ -36,9 +64,17 @@ function App() {
             <Navbar />
             <ProductScreen />
           </Route>
-          <Route path="/register">
+          <Route exact path="/register">
             <Navbar />
             <RegisterScreen />
+          </Route>
+          <Route exact path="/register/complete">
+            <Navbar />
+            <RegisterComplete />
+          </Route>
+          <Route exact path="/forgotPassword">
+            <Navbar />
+            <ForgotPassword />
           </Route>
         </Switch>
 

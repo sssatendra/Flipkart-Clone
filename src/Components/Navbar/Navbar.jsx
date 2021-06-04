@@ -10,9 +10,13 @@ import MoreT from "./MoreT";
 import "tippy.js/themes/light.css";
 import { Link } from "react-router-dom";
 import { useStateValue } from "../../StateProvider";
+import { useSelector, useDispatch } from "react-redux";
 
 function Navbar() {
   const [{ basket }, dispatch] = useStateValue();
+
+  let dispatchRedux = useDispatch();
+  let { user } = useSelector((state) => ({ ...state }));
   return (
     <div className="navbar__out">
       <div className="navbar__left">
@@ -38,10 +42,15 @@ function Navbar() {
           interactive={true}
           offset={[5, 18]}
         >
-          <Link to="/login">
-            <button className="header__btn">Login</button>
-          </Link>
+          {!user ? (
+            <Link to="/login">
+              <button className="header__btn">Login</button>
+            </Link>
+          ) : (
+            <h4>{JSON.stringify(user.email)}</h4>
+          )}
         </Tippy>
+
         <Tippy
           theme="light"
           interactive={true}

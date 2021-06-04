@@ -9,7 +9,7 @@
 h3 {
   margin-left: 25px;
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 700;
 }
 
 .cart__container {
@@ -79,7 +79,7 @@ h3 {
 
 .product__det > h2 {
   font-size: smaller;
-  font-weight: 500;
+  font-weight: 800;
   /* justify-content: flex-start; */
 }
 
@@ -140,9 +140,31 @@ h3 {
 }
 
 @media only screen and (max-width: 700px) {
+  .root {
+    width: 100vw;
+  }
   .product__in {
     display: flex;
     align-items: center;
+    flex-direction: column;
+  }
+
+  .cart__container {
+    width: 100vw;
+  }
+  .midcart {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .cartItems {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 50px;
+  }
+  .bottom__cart {
     flex-direction: column;
   }
 }

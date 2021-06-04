@@ -6,19 +6,37 @@ import CardGiftcardOutlinedIcon from "@material-ui/icons/CardGiftcardOutlined";
 import LoyaltyIcon from "@material-ui/icons/Loyalty";
 import StorefrontOutlinedIcon from "@material-ui/icons/StorefrontOutlined";
 import "./LoginT.css";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import { ExitToApp } from "@material-ui/icons";
+import firebase from "firebase";
+import { useDispatch, useSelector } from "react-redux";
 
 function LoginT() {
+  let dispatch = useDispatch();
+  let history = useHistory();
+  let dispatchRedux = useDispatch();
+  let { user } = useSelector((state) => ({ ...state }));
+
+  const logout = () => {
+    firebase.auth().signOut();
+    dispatch({
+      type: "LOGOUT",
+      payload: null,
+    });
+    history.push("/");
+  };
   return (
     <div className="more__t">
-      <div className="more__ind">
-        <div className="nav__head">
-          <h4 className="nav__head1">New Customer? </h4>
-          <Link to="/register">
-            <h4 id="nav__head2">SignUp</h4>
-          </Link>
+      {!user ? (
+        <div className="more__ind">
+          <div className="nav__head">
+            <h4 className="nav__head1">New Customer? </h4>
+            <Link to="/register">
+              <h4 id="nav__head2">SignUp</h4>
+            </Link>
+          </div>
         </div>
-      </div>
+      ) : null}
 
       <div className="more__ind">
         <AccountCircleIcon />
@@ -48,6 +66,12 @@ function LoginT() {
         <CardGiftcardOutlinedIcon />
         <p> Gift Cards</p>
       </div>
+      {user ? (
+        <div onClick={logout} className="more__ind">
+          <ExitToApp />
+          <p> Logout</p>
+        </div>
+      ) : null}
     </div>
   );
 }

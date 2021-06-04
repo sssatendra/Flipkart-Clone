@@ -2,38 +2,62 @@ import React from "react";
 import Counter from "./Counter";
 import "./CartItems.css";
 import { useStateValue } from "../../StateProvider";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { Zoom } from "react-toastify";
+import { Snackbar } from "@material-ui/core";
+import MuiAlert from "@material-ui/lab/Alert";
+import { makeStyles } from "@material-ui/core/styles";
+
+function Alert(props) {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+}
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    width: "100%",
+    "& > * + *": {
+      marginTop: theme.spacing(2),
+    },
+  },
+}));
 
 function CartItems(props) {
   const [{ basket }, dispatch] = useStateValue();
+
+  const classes = useStyles();
+  const [open, setOpen] = React.useState(false);
+
+  const handleClick = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
+  };
 
   const truncate = (str) => {
     return str.length > 30 ? str.substring(0, 24) + "..." : str;
   };
 
-  const removeFromBasket = (pid) => {
+  const removeFromBasket = () => {
     // remove thr item from basket
+    window.name = props.title;
     dispatch({
       type: "REMOVE_FROM_BASKET",
       id: props.id,
     });
-    toast.success(`${truncate(props.title)} removed from Cart`);
+    console.log(props.title);
   };
+
+  const callFunction = () => {
+    removeFromBasket();
+    handleClick();
+  };
+
   return (
     <div className="cartItems">
-      <ToastContainer
-        position="bottom-left"
-        transition={Zoom}
-        autoClose={4000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick={true}
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-      />
       <div className="midcart">
         <div className="product__in">
           <img className="product__img" src={props.image} alt="" />
@@ -57,9 +81,16 @@ function CartItems(props) {
       <div className="bottom__cart">
         <Counter />
         <button className="btn__primary">SAVE FOR LATER</button>
-        <button onClick={removeFromBasket} className="btn__primary">
+        <button onClick={callFunction} className="btn__primary">
           REMOVE
         </button>
+      </div>
+      <div className={classes.root}>
+        <Snackbar open={open} autoHideDuration={1000} onClose={handleClose}>
+          <Alert onClose={handleClose} severity="success">
+            {`${truncate(window.name)} removed from the cart`}
+          </Alert>
+        </Snackbar>
       </div>
     </div>
   );

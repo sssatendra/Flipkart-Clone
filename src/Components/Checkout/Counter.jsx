@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import { useStateValue } from "../../StateProvider";
 import "./Counter.css";
 
-function Counter() {
+function Counter({ id, rating, image, title, price }) {
   const [count, setCount] = useState(1);
+  const [{ basket }, dispatch] = useStateValue();
 
   function increase() {
     setCount(count + 1);

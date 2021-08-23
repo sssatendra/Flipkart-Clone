@@ -1,0 +1,127 @@
+.profileScreen__main {
+  width: 100vw;
+  height: auto;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.profileScreen__left {
+  margin: 0 25px 25px 65px;
+  /* flex: 0.25; */
+}
+
+.profileScreen__avatar {
+  display: flex;
+  /* justify-content: space-evenly; */
+  align-items: center;
+  margin-top: 25px;
+  box-shadow: 2px 4px 30px 0px rgba(0, 0, 0, 0.46);
+  -webkit-box-shadow: 2px 4px 30px 0px rgba(0, 0, 0, 0.46);
+  -moz-box-shadow: 2px 4px 30px 0px rgba(0, 0, 0, 0.46);
+  background-color: white;
+  width: 270px;
+  height: 80px;
+  margin-bottom: 25px;
+  border-radius: 5px;
+}
+.MuiAvatar-circle {
+  margin: 0 22px;
+  width: 60px !important;
+  height: 60px !important;
+}
+
+.greet {
+  font-size: 14px;
+  font-weight: 800;
+  text-align: left;
+}
+
+h1 {
+  font-size: 16px;
+  font-weight: 800;
+  text-align: left;
+}
+
+.profileScreen__leftDetails {
+  width: 270px;
+  height: auto;
+  box-shadow: 2px 4px 30px 0px rgba(0, 0, 0, 0.46);
+  -webkit-box-shadow: 2px 4px 30px 0px rgba(0, 0, 0, 0.46);
+  -moz-box-shadow: 2px 4px 30px 0px rgba(0, 0, 0, 0.46);
+}
+
+.screen__container {
+  padding: 10px 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 270px;
+  background: white;
+  transition: transform 450ms;
+  cursor: pointer;
+}
+.screen__container:hover {
+  transform: scale(1.1);
+  border-radius: 5px;
+}
+
+.screen__container > .MuiSvgIcon-root {
+  color: #0875c9;
+  margin: 0 18px;
+}
+
+.screen__container p {
+  font-size: 14px;
+  font-weight: 800;
+}
+.screen__container p:hover {
+  color: #0875c9;
+}
+
+.profileScreen__right {
+  width: 960px;
+  position: relative;
+  right: 20px;
+  background-color: white;
+  height: 520px;
+  margin-top: 22px;
+  box-shadow: 2px 4px 30px 0px rgba(0, 0, 0, 0.46);
+  -webkit-box-shadow: 2px 4px 30px 0px rgba(0, 0, 0, 0.46);
+  -moz-box-shadow: 2px 4px 30px 0px rgba(0, 0, 0, 0.46);
+}
+
+.profileScreen__right h1 {
+  margin: 15px 20px;
+  font-size: 18px;
+  font-weight: 1200;
+}
+
+.CustomizedSelect {
+  margin-top: -25px;
+}
+
+@media only screen and (max-width: 700px) {
+  .profileScreen__main {
+    flex-direction: column;
+  }
+  .profileScreen__left {
+    justify-content: center;
+    width: 90vw;
+    /* margin: 0; */
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .profileScreen__avatar {
+    /* justify-content: center; */
+    width: 320px;
+  }
+  .profileScreen__right {
+    justify-content: center;
+    width: 90vw;
+    margin-left: 45px;
+  }
+  .screen__container {
+    width: 320px;
+  }
+}

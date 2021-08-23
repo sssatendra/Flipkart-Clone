@@ -1,15 +1,24 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { auth } from '../../Firebase';
 import "./ForgotPassword.css"
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"
 import { Backdrop } from '@material-ui/core';
 import CircularIndeterminate from './Circular';
+import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router';
 
 function ForgotPassword() {
 
     const [email, setEmail] = useState("");
     const [loading, setLoading] = useState(false);
+
+    const { user } = useSelector((state) => ({ ...state }));
+    const history = useHistory();
+
+    useEffect(() => {
+        if (user && user.token) history.pushState('/')
+    }, [user]);
 
     const handleSubmit = async (e) => {
         setLoading(true);

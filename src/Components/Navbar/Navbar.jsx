@@ -47,7 +47,9 @@ function Navbar() {
               <button className="header__btn">Login</button>
             </Link>
           ) : (
-            <h4>{JSON.stringify(user.email)}</h4>
+            <h4 className="username">
+              {user.name ? user.name : user.email.split("@")[0]}
+            </h4>
           )}
         </Tippy>
 

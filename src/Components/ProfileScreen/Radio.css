@@ -1,0 +1,12 @@
+.MuiFormGroup-root {
+  display: flex;
+  justify-content: center;
+  flex-direction: row !important;
+  /* margin: 10px 20px; */
+  margin-top: 10px;
+  font-size: smaller;
+}
+
+.MuiFormControl-root {
+  margin: 10px 20px !important;
+}

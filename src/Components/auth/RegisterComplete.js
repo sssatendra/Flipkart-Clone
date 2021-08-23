@@ -5,7 +5,18 @@ import { auth } from '../../Firebase';
 import "./RegisterScreen.css"
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"
+import { useDispatch, useSelector } from 'react-redux';
 import CircularIndeterminate from './Circular';
+// import axios from "axios";
+import { createOrUpdateUser } from '../../functions/auth';
+
+// const createOrUpdateUser = async (authtoken) => {
+//     return await axios.post(`${process.env.REACT_APP_API}/create-or-update-user`, {}, {
+//         headers: {
+//             authtoken,
+//         }
+//     })
+// }
 
 function RegisterComplete() {
     const [email, setEmail] = useState("");
@@ -13,7 +24,9 @@ function RegisterComplete() {
     const [cnfPassword, setCnfPassword] = useState('');
     const [loading, setLoading] = useState(false);
 
-    let history = useHistory();
+    // const { user } = useSelector((state) => ({ ...state }));
+    let dispatch = useDispatch();
+    const history = useHistory();
 
     useEffect(() => {
         setEmail(window.localStorage.getItem("emailForRegistration"));
@@ -44,12 +57,26 @@ function RegisterComplete() {
                 // remove the Email from local storage
                 window.localStorage.removeItem("emailForRegistration");
                 // get user id token
-                let user = auth.currentUser
+                let user = auth.currentUser;
                 await user.updatePassword(password);
                 const idTokenResult = await user.getIdTokenResult();
-                // redux store
-                console.log(user, idTokenResult);
-                // redirect
+                createOrUpdateUser(idTokenResult.token)
+                    .then((res) => {
+                        dispatch({
+                            type: "LOGGED_IN_USER",
+                            payload: {
+                                name: res.data.name,
+                                email: res.data.email,
+                                token: idTokenResult.token,
+                                role: res.data.role,
+                                _id: res.data._id
+                            }
+                        });
+                        history.push('/');
+                    })
+                    .catch(e => toast.error(e));
+                // console.log(user.displayName);
+                // redirect after login
                 history.push('/');
             }
         } catch (error) {

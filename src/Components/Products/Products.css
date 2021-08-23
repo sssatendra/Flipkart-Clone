@@ -5,6 +5,8 @@
   flex-direction: row;
   overflow-y: hidden;
   overflow-x: scroll;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 .products__dod::-webkit-scrollbar {
@@ -22,6 +24,8 @@
   align-items: center;
   overflow-y: hidden;
   overflow-x: scroll;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 .products__suggested::-webkit-scrollbar {
@@ -35,6 +39,8 @@
   align-items: center;
   overflow-y: hidden;
   overflow-x: scroll;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 .products__electronics::-webkit-scrollbar {

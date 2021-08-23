@@ -66,36 +66,45 @@
 }
 
 .loginScreen__input > form > input {
-  padding: 10px;
+  padding: 15px;
   outline-width: 0;
-  height: 30px;
-  width: 75%;
+  height: 22px;
+  width: 70%;
   border: none;
   max-width: 600px;
   /* border-bottom-left-radius: 5px;
   border-top-left-radius: 5px;xz */
-  border-radius: 5px;
+  border-radius: 50px;
 }
 
 .loginScreen__input > form > button {
-  margin-top: 20px;
-  padding: 10px;
+  display: inline-flex;
+  justify-content: center;
+  margin-top: 12px;
+  padding: 25px;
   outline-width: 0;
-  height: 30px;
-  width: 120px;
+  height: 22px;
+  width: 75%;
   border: none;
-  max-width: 600px;
-  border-radius: 5px;
-  text-align: center;
-  vertical-align: center;
+  border-radius: 25px;
   font-family: "Montserrat";
   font-weight: 800;
   box-shadow: 0 1px 2px #5e5d5b;
-  line-height: 10px;
+  align-items: center;
+  cursor: pointer;
+  font-size: 1rem;
 }
 .loginScreen__input > form > button:hover {
   background-color: transparent;
   border: 1px solid white;
+  color: white;
+  /* height: 30px;
+  width: 140px; */
+  padding: 25px;
+}
+
+#googlebtn {
+  background: #db4437;
   color: white;
 }
 
@@ -115,6 +124,8 @@
   width: 40vw;
   margin-left: auto;
   margin-right: auto;
+  margin-top: -50px;
+  min-width: 280px;
 }
 
 .login__form > input {

@@ -189,16 +189,27 @@ p {
   .cart {
     background-color: #f1f3f6;
     margin-top: 20px;
-    align-items: center;
-    justify-content: center;
     display: flex;
+    justify-content: center;
     align-items: center;
     flex-direction: column;
-    object-fit: contain;
+    object-fit: cover;
+    width: 100vw;
   }
-
   .cart__empty {
     width: 90%;
     height: 520px;
+  }
+  /* .cartinfo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  } */
+  .cart__container {
+    width: 100%;
+    margin: 25px;
+    margin-top: 0;
+    height: auto;
   }
 }

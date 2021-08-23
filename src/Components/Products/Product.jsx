@@ -4,6 +4,7 @@ import { useStateValue } from "../../StateProvider";
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
 import { makeStyles } from "@material-ui/core/styles";
+// import { motion } from "framer-motion";
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -73,9 +74,6 @@ function Product(props) {
             <p>{props.rating}🌟</p>
           </div>
           <p className="product__price">₹{props.price}</p>
-          {/* <Button variant="outlined" color="primary" onClick={addToBasket}>
-            Add to cart
-          </Button> */}
           <button onClick={callTwoFunction}>ADD TO CART</button>
         </div>
       </div>

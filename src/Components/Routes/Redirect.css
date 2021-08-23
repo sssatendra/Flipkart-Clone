@@ -1,0 +1,20 @@
+.route__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 80vh;
+}
+
+.inner__container {
+  width: 700px;
+  height: 400px;
+  background: white;
+  box-shadow: 2px 4px 30px 0px rgba(0, 0, 0, 0.46);
+  -webkit-box-shadow: 2px 4px 30px 0px rgba(0, 0, 0, 0.46);
+  -moz-box-shadow: 2px 4px 30px 0px rgba(0, 0, 0, 0.46);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}

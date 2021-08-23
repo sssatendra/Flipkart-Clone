@@ -1,5 +1,5 @@
-import React, { useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import { auth } from '../../Firebase';
 import "./RegisterScreen.css";
 import { toast, ToastContainer } from "react-toastify";
@@ -7,37 +7,19 @@ import "react-toastify/dist/ReactToastify.css"
 import { Zoom } from "react-toastify";
 // import RegisterComplete from "./RegisterComplete"
 import CircularIndeterminate from "./Circular";
+import { useSelector } from 'react-redux';
 
 function RegisterScreen() {
 
     const [email, setEmail] = useState("");
     const [loading, setLoading] = useState(false);
 
-    // const emailRef = useRef(null);
-    // const passwordRef = useRef(null);
-    // const register = (e) => {
-    //     e.preventDefault();
-    //     auth.createUserWithEmailAndPassword(
-    //         emailRef.current.value,
-    //         passwordRef.current.value
-    //     ).then((authUser) => {
-    //         console.log(authUser);
-    //     }).catch((error) => {
-    //         alert(error.message);
-    //     })
-    // };
+    const { user } = useSelector((state) => ({ ...state }));
+    const history = useHistory();
 
-    // const signIn = (e) => {
-    //     e.preventDefault();
-    //     auth.signInWithEmailAndPassword(
-    //         emailRef.current.value,
-    //         passwordRef.current.value
-    //     ).then((authUser) => {
-    //         console.log(authUser);
-    //     }).catch((error) => {
-    //         alert(error.message);
-    //     })
-    // };
+    useEffect(() => {
+        if (user && user.token) history.pushState('/')
+    }, [user]);
 
     const handleSubmit = async (e) => {
         setLoading(true);

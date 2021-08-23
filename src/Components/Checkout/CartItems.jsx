@@ -84,6 +84,7 @@ function CartItems(props) {
         <button onClick={callFunction} className="btn__primary">
           REMOVE
         </button>
+        <hr />
       </div>
       <div className={classes.root}>
         <Snackbar open={open} autoHideDuration={1000} onClose={handleClose}>

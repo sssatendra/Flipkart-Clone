@@ -39,36 +39,38 @@ function LoginT() {
       ) : null}
 
       <div className="more__ind">
-        <AccountCircleIcon />
-        <p>My Profile</p>
+        <Link to="/profile">
+          <AccountCircleIcon className="ico" />
+          <p> My Profile</p>
+        </Link>
       </div>
 
       <div className="more__ind">
-        <StarBorderOutlinedIcon />
+        <StarBorderOutlinedIcon className="ico" />
         <p> Flipkart Plus Zone </p>
       </div>
 
       <div className="more__ind">
-        <StorefrontOutlinedIcon />
+        <StorefrontOutlinedIcon className="ico" />
         <p>Orders</p>
       </div>
 
       <div className="more__ind">
-        <FavoriteOutlinedIcon />
+        <FavoriteOutlinedIcon className="ico" />
         <p> Wishlist </p>
       </div>
 
       <div className="more__ind">
-        <LoyaltyIcon />
+        <LoyaltyIcon className="ico" />
         <p>Rewards</p>
       </div>
       <div className="more__ind">
-        <CardGiftcardOutlinedIcon />
+        <CardGiftcardOutlinedIcon className="ico" />
         <p> Gift Cards</p>
       </div>
       {user ? (
         <div onClick={logout} className="more__ind">
-          <ExitToApp />
+          <ExitToApp className="ico" />
           <p> Logout</p>
         </div>
       ) : null}

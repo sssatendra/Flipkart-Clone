@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { useHorizontalScroll } from "../../utils";
 import Product from "./Product";
 import "./Products.css";
 
 function Products() {
   const [items, setItems] = useState();
   const [electronics, setElectronics] = useState();
+  // const scrollRef = useHorizontalScroll();
 
   const fetchProducts = async () => {
     console.log("Inside Async Function");
@@ -21,10 +23,10 @@ function Products() {
     setElectronics(jsonData);
   };
 
-  function myFunction() {
-    var x = Math.floor(Math.random() * 5 + 1);
-    return x;
-  }
+  // function myFunction() {
+  //   var x = Math.floor(Math.random() * 5 + 1);
+  //   return x;
+  // }
 
   useEffect(() => {
     fetchProducts();
@@ -37,7 +39,7 @@ function Products() {
   return (
     <div className="products">
       <h2>Laptops</h2>
-      <div data-aos="fade-up" className="products__dod">
+      <div className="products__dod">
         <Product
           id="1651981"
           image="https://rukminim1.flixcart.com/image/416/416/k9loccw0/computer/4/f/w/acer-na-gaming-laptop-original-imafrcpya8phvptc.jpeg?q=70"
@@ -133,6 +135,7 @@ function Products() {
       </div>
 
       <h2>New in Store</h2>
+
       <div data-aos="fade-up" className="products__suggested">
         {items?.map((item) => {
           return (
@@ -147,6 +150,7 @@ function Products() {
           );
         })}
       </div>
+
       <h2>Electronics</h2>
       <div className="products__electronics">
         {electronics?.map((item) => {

@@ -53,12 +53,12 @@ function Product(props) {
         rating: props.rating,
       },
     });
-  };
-
-  const callTwoFunction = () => {
-    addToBasket();
     handleClick();
   };
+
+  // const callTwoFunction = () => {
+  //   addToBasket();
+  // };
 
   return (
     <>
@@ -74,7 +74,7 @@ function Product(props) {
             <p>{props.rating}🌟</p>
           </div>
           <p className="product__price">₹{props.price}</p>
-          <button onClick={callTwoFunction}>ADD TO CART</button>
+          <button onClick={addToBasket}>ADD TO CART</button>
         </div>
       </div>
       <div className={classes.root}>

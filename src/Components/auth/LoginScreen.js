@@ -54,7 +54,8 @@ function LoginScreen() {
                                 email: res.data.email,
                                 token: idTokenResult.token,
                                 role: res.data.role,
-                                _id: res.data._id
+                                _id: res.data._id,
+
                             }
                         });
                         // history.push('/');
@@ -119,11 +120,11 @@ function LoginScreen() {
                             {loading ? (<CircularIndeterminate />) : <button disabled={!email || password.length < 6} type="submit" onClick={handleSubmit} >Login</button>}
                             <button id='googlebtn' onClick={googleLogin}> Login with Google</button>
                             <Link to="/forgotPassword"> <p>Forgot Password?</p> </Link>
-                            <ToastContainer />
                         </form>
                     </div>
                 </>
             </div>
+            <ToastContainer />
         </div>
     )
 }

@@ -7,7 +7,7 @@ import FormLabel from "@material-ui/core/FormLabel";
 import "./Radio.css";
 
 export default function RadioButtonsGroup() {
-  const [value, setValue] = React.useState("female");
+  const [value, setValue] = React.useState("");
 
   const handleChange = (event) => {
     setValue(event.target.value);

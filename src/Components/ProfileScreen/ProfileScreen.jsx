@@ -42,11 +42,7 @@ function ProfileScreen() {
     <div className="profileScreen__main">
       <div className="profileScreen__left">
         <div className="profileScreen__avatar">
-          <Avatar
-            className="avatar__img"
-            alt=""
-            src="http://3.bp.blogspot.com/-iLQRphAVwAI/T0VXXsCWKkI/AAAAAAAAKZs/ReV3vL8Ql5s/s1600/Movie+Wallpaper+Iron+Man+Character+1280x720.jpg"
-          />
+          <Avatar className="avatar__img" alt="" src={user?.picture} />
           <div>
             <h1 className="greet">Hello,</h1>
             <h1>{user?.name.split(" ")[0]}</h1>
@@ -90,17 +86,24 @@ function ProfileScreen() {
         <form className={classes.root} noValidate autoComplete="off">
           <TextField
             id="outlined-basic"
-            label="First Name"
+            // label="First Name"
             variant="outlined"
+            value={user?.name.split(" ")[0]}
           />
-          <TextField id="outlined-basic" label="Last Name" variant="outlined" />
+          <TextField
+            id="outlined-basic"
+            // label="Last Name"
+            variant="outlined"
+            value={user?.name.split(" ")[1]}
+          />
         </form>
         <RadioButtonsGroup />
         <form className={classes.root} noValidate autoComplete="off">
           <TextField
             id="outlined-basic"
-            label="Email Address"
+            // label="Email Address"
             variant="outlined"
+            value={user?.email}
           />
         </form>
       </div>

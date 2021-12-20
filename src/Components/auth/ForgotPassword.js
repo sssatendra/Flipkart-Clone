@@ -36,7 +36,7 @@ function ForgotPassword() {
                 toast.success(`Password reset Link sent to ${email}, Click the link to set new password`);
             }).catch((error) => {
                 setLoading(false);
-                console.log(error.message);
+                // console.log(error.message);
                 toast.error(error.message)
             })
         // toast.success(`Password rest Link sent to ${email}, Click the link to set new password`);

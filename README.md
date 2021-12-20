@@ -1,5 +1,7 @@
 # Getting Started with Create React App
 
+Checkout Live Website : https://flipkart-clone-1a222.web.app/
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
